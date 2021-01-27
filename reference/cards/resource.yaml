@@ -28,10 +28,6 @@ definitions:
         en: Customer ID.
         es: Identificador de cliente.
         pt: Identificador de cliente.
-  - date_registered:
-      type: String
-      description: 
-        en: Nao sei o que é
   - expiration_month:
       type: Integer
       description:

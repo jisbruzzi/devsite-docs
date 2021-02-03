@@ -23,7 +23,7 @@ Você pode ver o estado do pagamento na resposta do API como `rejected` e o moti
 }
 ```
 
-E também poderá achar mais informações sobre o detalhe do pagamento na [atividade da conta de Mercado Pago](https://www.mercadopago.com.br/activities) em que os pagamentos são recebidos.
+E também poderá achar mais informações sobre o detalhe do pagamento na [atividade da conta de Mercado Pago](https://www.mercadopago[FAKER][URL][DOMAIN]/activities) em que os pagamentos são recebidos.
 
 > WARNING
 >
@@ -52,7 +52,7 @@ Quando o nosso sistema de prevenção de fraude detectar um pagamento suspeito, 
 
 Para evitar que um pagamento real seja recusado por não atender as validações de segurança, é necessário somar todas as informações possíveis na hora de realizar a operação.
 
-Ajudamos você a detectar comportamentos infrequentes dos clientes com o nosso Código de Segurança o Device ID para prevenir a fraude. E não se preocupe, cuidamos dos dados de seus clientes e não os compartilhamos com ninguém.
+Ajudamos você a detectar comportamentos infrequentes dos clientes com o nosso código de segurança e device ID para prevenir a fraude. E não se preocupe, cuidamos dos dados de seus clientes e não os compartilhamos com ninguém.
 
 > NOTE
 >
@@ -84,7 +84,7 @@ Ajudamos você a detectar comportamentos infrequentes dos clientes com o nosso C
 
 ### Implementação do device ID em sua web
 
-Para implementar a geração do dispositivo em seu site, adicione o seguinte código em seu plataforma de pagos:
+Para implementar a geração do dispositivo em seu site, adicione o seguinte código:
 
 ```html
 <script src="https://www.mercadopago.com/v2/security.js" view="checkout"></script>
@@ -95,7 +95,8 @@ Para implementar a geração do dispositivo em seu site, adicione o seguinte có
 ```http
 X-meli-session-id: device_id
 ```
-**Você pode obter o `device_id` de duas formas:**
+
+#### Você pode obter o device ID de duas formas:
 
 Uma variável global de javascript é criada automaticamente com o nome `MP_DEVICE_SESSION_ID`, cujo o valor é o `device_id`. Se você preferir atribuí-lo a outra variável, indique o nome adicionando o atributo `output`.
 
@@ -116,7 +117,6 @@ Se você possui uma aplicação nativa, pode capturar a informação do disposit
 #### 1. Adicione a dependência
 
 [[[
-
 ```ios
 ===
 Adicionar o seguinte código no arquivo **Podfile**.
@@ -132,13 +132,11 @@ dependencies {
    implementation 'com.mercadolibre.android.device:sdk:1.0.0'
 }
 ```
-
 ]]]
 
 #### 2. Inicialize o módulo
 
 [[[
-
 ```swift
 ===
 Recomendamos realizar a inicialização no envento didFinishLaunchingWithOptions do AppDelegate.
@@ -146,7 +144,7 @@ Recomendamos realizar a inicialização no envento didFinishLaunchingWithOptions
 import MercadoPagoDevicesSDK
 ...
 func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        ...        
+        ...
         MercadoPagoDevicesSDK.shared.execute()
         ...
 }
@@ -172,7 +170,6 @@ import com.mercadolibre.android.devices.sdk.DeviceSDK;
 
 DeviceSDK.getInstance().execute(this);
 ```
-
 ]]]
 
 #### 3. Capture a informação
@@ -180,7 +177,6 @@ DeviceSDK.getInstance().execute(this);
 Execute alguma das funções abaixo para obter a informação no formato que precisar.
 
 [[[
-
 ```swift
 MercadoPagoDevicesSDK.shared.getInfo() // Devolve um objeto Device que é Codificável
 MercadoPagoDevicesSDK.shared.getInfoAsJson() // Devolve um objeto em JSON
@@ -197,7 +193,6 @@ Device device = DeviceSDK.getInstance().getInfo() // Devolve um objeto Device, q
 Map deviceMap = DeviceSDK.getInstance().getInfoAsMap()  // Devolve um Map<String, Object>
 String jsonString = DeviceSDK.getInstance().getInfoAsJsonString() // Devolve uma String no formato JSON
 ```
-
 ]]]
 
 #### 4. Envie a informação
